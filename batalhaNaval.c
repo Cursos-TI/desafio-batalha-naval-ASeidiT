@@ -36,7 +36,7 @@ int main() {
         }
     }
 
-// Navio horizontal - Tamanho 3
+// Navio vertical - Tamanho 3
     int linhaInicioNavioV = 5; // Linha onde o navio vertical começa (índice 5 = sexta linha)
     int colunaNavioV = 7; // Coluna onde o navio vertical vai ficar (índice 7 = oitava coluna, 'H')
 
