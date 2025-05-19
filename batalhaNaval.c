@@ -23,8 +23,8 @@ int main() {
 
 
 // Navio horizontal - Tamanho 3
-    int linhaNavioH = 2; // Linha onde o navio horizontal vai ficar (índice 2 = terceira linha)
-    int colunaInicioNavioH = 3; // Coluna onde o navio começa (índice 3 = quarta coluna, 'D')
+    int linhaNavioH = 1; // Linha onde o navio horizontal vai ficar (índice 2 = terceira linha)
+    int colunaInicioNavioH = 1; // Coluna onde o navio começa (índice 3 = quarta coluna, 'D')
 
     printf("Colocando navio horizontal...\n");
     for (int k = 0; k < 3; k++) { // Repete para cada parte do navio
@@ -37,7 +37,7 @@ int main() {
     }
 
 // Navio vertical - Tamanho 3
-    int linhaInicioNavioV = 5; // Linha onde o navio vertical começa (índice 5 = sexta linha)
+    int linhaInicioNavioV = 4; // Linha onde o navio vertical começa (índice 5 = sexta linha)
     int colunaNavioV = 7; // Coluna onde o navio vertical vai ficar (índice 7 = oitava coluna, 'H')
 
     printf("Colocando navio vertical...\n");
@@ -47,6 +47,41 @@ int main() {
         // Verifica se a linha atual está dentro dos limites do tabuleiro
         if (linhaAtual < 10) {
             tabuleiro[linhaAtual][colunaNavioV] = 3; // Coloca o valor 3 na posição
+        }
+    }
+
+// Posiciona navio diagonal 1 (esquerda para direita)
+    for (i = 1; i <= 3; i++) {
+        for (j = 7; j <= 9; j++) {
+            if (i - 1 == j - 7) {
+                tabuleiro[i][j] = 3;
+            }
+        }
+    }
+
+// Posiciona navio diagonal 2 (direita para esquerda) - seu original
+    for ( j = 2; j <  2 + 1; j++){
+        for( j = 1; j < 1 + 1; j++){
+            for( j = 0; j < 0 + 1; j++){
+                tabuleiro[9][j] = 3;
+            }
+            tabuleiro[8][j] = 3;
+        }
+        tabuleiro[7][j] = 3;
+    }
+
+// Poder em forma de cone com topo em linha 7, coluna 5
+    int centro = 5;
+    int linhaTopo = 7;
+    for (i = 0; i < 3; i++) { // 3 linhas: 7, 8, 9
+        int linha = linhaTopo + i;
+        if (linha >= 10) break;
+        for (j = centro - i; j <= centro + i; j++) {
+            if (j >= 0 && j < 10) {
+                if (tabuleiro[linha][j] == 0) {
+                    tabuleiro[linha][j] = 4; // substitui apenas se for água
+                }
+            }
         }
     }
 
